@@ -11,7 +11,7 @@
 /*
   === GameObject ===
   * createdAt
-  * name
+  * name - WIP 
   * dimensions (These represent the character's size in the video game)
   * destroy() // prototype method that returns: `${this.name} was removed from the game.`
 */
@@ -38,6 +38,41 @@
   * Instances of Humanoid should have all of the same properties as CharacterStats and GameObject.
   * Instances of CharacterStats should have all of the same properties as GameObject.
 */
+
+function GameObject(attributes)
+{
+this.name = attributes.name  
+}
+
+GameObject.prototype.destory = function(){}
+
+
+
+function CharacterStats(attributes)
+{
+GameObject.call(this, attributes)
+}
+
+CharacterStats.prototype = Object.create(GameObject.prototype);
+CharacterStats.prototype.takeDamage = function(){}
+
+
+
+function Humanoid(attributes)
+{
+CharacterStats.call(this, attributes)
+}
+
+Humanoid.prototype = Object.create(CharacterStats.prototype);
+Humanoid.prototype.greet = function(){}
+
+new Humanoid(
+{
+name: 'Reese'
+
+}
+)
+
 
 // Test you work by un-commenting these 3 objects and the list of console logs below:
 
